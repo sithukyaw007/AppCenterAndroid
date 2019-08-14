@@ -6,8 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.microsoft.appcenter.analytics.Analytics;
+
 public class DistributeActivity extends Fragment {
     private static final String pageName = "Distribute";
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Analytics.trackEvent("Distribute Page");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

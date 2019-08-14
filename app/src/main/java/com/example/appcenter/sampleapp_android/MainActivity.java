@@ -19,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private final int PAGECOUNT = 7;
 
     @Override
+    public void onStart(){
+        super.onStart();
+        Analytics.trackEvent("Main Page");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCenter.start(getApplication(), "589ce25c-eb49-4197-9eff-426322cfd9e3",
                 Analytics.class, Crashes.class);

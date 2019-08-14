@@ -22,6 +22,12 @@ public class AnalyticsActivity extends Fragment implements OnClickListener {
     private static Map<String, String> properties = new HashMap<>();
 
     @Override
+    public void onStart(){
+        super.onStart();
+        Analytics.trackEvent("Analytics Page");
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(

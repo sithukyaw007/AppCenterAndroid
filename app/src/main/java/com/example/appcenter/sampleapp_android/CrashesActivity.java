@@ -12,8 +12,17 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 public class CrashesActivity extends Fragment implements OnClickListener {
     private static final String pageName = "Crashes";
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Analytics.trackEvent("Crashes Page");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +61,7 @@ public class CrashesActivity extends Fragment implements OnClickListener {
             builder.setMessage("A crash report will be sent when you reopen the app.")
                     .setPositiveButton("Crash app", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
+                            Crashes.generateTestCrash();
                             throw new RuntimeException("crashing");
                         }
                     }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

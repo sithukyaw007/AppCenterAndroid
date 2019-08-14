@@ -6,8 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.microsoft.appcenter.analytics.Analytics;
+
 public class WelcomeActivity extends Fragment {
     private static final String pageName = "Welcome";
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Analytics.trackEvent("Welcome Page");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
